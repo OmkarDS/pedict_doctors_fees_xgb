@@ -90,3 +90,4 @@ df['Miscellaneous_Info'] = df['Miscellaneous_Info'].fillna('unknown')
 df['no_of_ratings'] = df['Miscellaneous_Info'].apply(lambda row : 0 if re.match(misc_info_pattern, row)== None
   else (re.match(misc_info_pattern, row).group(3)))
 df['no_of_ratings'] = pd.to_numeric(df['no_of_ratings'])
+df = df.drop(['Miscellaneous_Info'], axis = 1)

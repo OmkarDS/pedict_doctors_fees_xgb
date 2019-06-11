@@ -72,4 +72,11 @@ df['city'] = df['city'].fillna('unknown')
 #plt.legend(loc = 'upper right')
 #plt.xticks(rotation = 40)
 #plt.show()
-    
+
+le_location = LabelEncoder()
+le_city = LabelEncoder()
+
+df['location'] = le_location.fit_transform(df['location'])
+df['city'] = le_city.fit_transform(df['city'])
+
+df = df.drop(['Place'], axis = 1)

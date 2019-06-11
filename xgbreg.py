@@ -37,3 +37,15 @@ print("RMSE test: %f" % (rmse))
 
 cv_results = cross_val_score(regressor,X,y,scoring='neg_mean_squared_error',cv=5)
 avg_cv_result = np.mean((cv_results*-1)**0.5)
+
+
+'''
+Saving Results
+'''
+
+#test_file = 'Final_Test.xlsx'
+#test_df, test_X = cleaning(test_file, train=False)
+#
+#final_prediction = regressor.predict(test_X)
+#final_prediction = pd.DataFrame(final_prediction,columns = ['Fees'],index=None)
+#final_prediction.to_excel("results.xlsx",index=False)

@@ -47,3 +47,29 @@ Cleaning Rating column
 df['Rating'] = df['Rating'].fillna('0%')
 rating_pattern = re.compile('(\d*)')
 df['Rating'] = df['Rating'].apply(lambda row : float(re.match(rating_pattern, row).group(1)))
+
+
+'''
+Cleaning Place column
+'''
+df['location'] = df['Place'].str.split(',').str[0]
+df['location'] = df['location'].fillna('unknown')
+df['city'] = df['Place'].str.split(',').str[1]
+df['city'] = df['city'].fillna('unknown')
+
+
+#'''
+#Visualization
+#'''
+#
+#sns.pointplot(data=df,
+#              y='Fees',
+#              x='city',
+#              capsize=.1)
+#plt.show()
+#
+#sns.barplot(data=df,y='Fees',x='city', hue = 'Profile')
+#plt.legend(loc = 'upper right')
+#plt.xticks(rotation = 40)
+#plt.show()
+    

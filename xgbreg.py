@@ -11,7 +11,9 @@ df, X_train, X_test, y_train, y_test, X, y = cleaning(file_name)
 
 
 ''' Model '''
-regressor = xgb.XGBRegressor()
+regressor = xgb.XGBRegressor(gamma = 0, learning_rate = 0.1,
+              n_estimators = 150, subsample = 1,
+              colsample_bytree = 1, max_depth = 3)
 
 regressor.fit(X_train, y_train)
 train_predictions = regressor.predict(X_train)

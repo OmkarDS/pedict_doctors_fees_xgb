@@ -80,3 +80,13 @@ df['location'] = le_location.fit_transform(df['location'])
 df['city'] = le_city.fit_transform(df['city'])
 
 df = df.drop(['Place'], axis = 1)
+
+'''
+Cleaning Miscellaneous_Info column
+'''
+misc_info_pattern = re.compile('((\d*)\%\s(\d*))')
+
+df['Miscellaneous_Info'] = df['Miscellaneous_Info'].fillna('unknown')
+df['no_of_ratings'] = df['Miscellaneous_Info'].apply(lambda row : 0 if re.match(misc_info_pattern, row)== None
+  else (re.match(misc_info_pattern, row).group(3)))
+df['no_of_ratings'] = pd.to_numeric(df['no_of_ratings'])

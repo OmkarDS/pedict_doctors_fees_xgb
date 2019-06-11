@@ -39,6 +39,17 @@ cv_results = cross_val_score(regressor,X,y,scoring='neg_mean_squared_error',cv=5
 avg_cv_result = np.mean((cv_results*-1)**0.5)
 
 
+#''' GridsearchCV '''
+#parameters = {'gamma' : [0,0.1,0.2], 'learning_rate': [0.1,0.2,0.3],
+#              'n_estimators':[100, 150, 50], 'subsample' : [1,0],
+#              'colsample_bytree' : [1,0], 'max_depth' : [3,4,5]}
+#gs = GridSearchCV(regressor, parameters, scoring = 'neg_mean_squared_error', cv = 5)
+#gs.fit(X_train,y_train)
+#
+#best_score = gs.best_score_
+#best_params = gs.best_params_
+
+
 '''
 Saving Results
 '''

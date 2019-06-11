@@ -30,3 +30,20 @@ le_qual_3 = LabelEncoder()
 df['Qual_1'] = le_qual_1.fit_transform(df['Qual_1'])
 df['Qual_2'] = le_qual_2.fit_transform(df['Qual_2'])
 df['Qual_3'] = le_qual_3.fit_transform(df['Qual_3'])
+
+
+'''
+Cleaning Experience column
+
+'''
+exp_pattern = re.compile('(\d*)')
+df['Experience'] = df['Experience'].apply(lambda row : float(re.match(exp_pattern, row).group(1)))
+
+
+'''
+Cleaning Rating column
+'''
+
+df['Rating'] = df['Rating'].fillna('0%')
+rating_pattern = re.compile('(\d*)')
+df['Rating'] = df['Rating'].apply(lambda row : float(re.match(rating_pattern, row).group(1)))
